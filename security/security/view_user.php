@@ -2,23 +2,12 @@
 require_once 'models/UserModel.php';
 $userModel = new UserModel();
 
-$user = NULL; //Add new user
+$user = NULL; // Add new user
 $id = NULL;
 
 if (!empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $user = $userModel->findUserById($id);//Update existing user
-}
-
-
-if (!empty($_POST['submit'])) {
-
-    if (!empty($id)) {
-        $userModel->updateUser($_POST);
-    } else {
-        $userModel->insertUser($_POST);
-    }
-    header('location: list_users.php');
+    $id = base64_decode($_GET['id']); // Decode the user ID
+    $user = $userModel->findUserById($id); // Update existing user
 }
 
 ?>
@@ -31,7 +20,6 @@ if (!empty($_POST['submit'])) {
 <body>
 <?php include 'views/header.php'?>
 <div class="container">
-
     <?php if ($user || empty($id)) { ?>
         <div class="alert alert-warning" role="alert">
             User profile
@@ -43,12 +31,12 @@ if (!empty($_POST['submit'])) {
                 <span><?php if (!empty($user[0]['name'])) echo $user[0]['name'] ?></span>
             </div>
             <div class="form-group">
-                <label for="password">Fullname</label>
-                <span><?php if (!empty($user[0]['name'])) echo $user[0]['fullname'] ?></span>
+                <label for="fullname">Fullname</label>
+                <span><?php if (!empty($user[0]['fullname'])) echo $user[0]['fullname'] ?></span>
             </div>
             <div class="form-group">
-                <label for="password">Email</label>
-                <span><?php if (!empty($user[0]['name'])) echo $user[0]['email'] ?></span>
+                <label for="email">Email</label>
+                <span><?php if (!empty($user[0]['email'])) echo $user[0]['email'] ?></span>
             </div>
         </form>
     <?php } else { ?>

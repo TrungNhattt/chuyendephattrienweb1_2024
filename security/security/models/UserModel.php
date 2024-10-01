@@ -49,15 +49,27 @@ class UserModel extends BaseModel {
      * @return mixed
      */
     public function updateUser($input) {
+        if (empty($input['name']) || !preg_match('/^[A-Za-z0-9]{5,15}$/', $input['name'])) {
+            return 'Tên người dùng không hợp lệ. Nó phải từ 5 đến 15 ký tự và chỉ chứa A-Z, a-z, 0-9.';
+        }
+    
+        if (empty($input['password']) || 
+            !preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[~!@#$%^&*()]).{5,10}$/', $input['password'])) {
+            return 'Mật khẩu không hợp lệ. Nó phải từ 5 đến 10 ký tự, bao gồm chữ thường, chữ HOA, số và ký tự đặc biệt.';
+        }
+        $name = mysqli_real_escape_string(self::$_connection, $input['name']);
+        $password = password_hash($input['password'], PASSWORD_BCRYPT);
+    
         $sql = 'UPDATE users SET 
-                 name = "' . mysqli_real_escape_string(self::$_connection, $input['name']) .'", 
-                 password="'. md5($input['password']) .'"
-                WHERE id = ' . $input['id'];
-
+                 name = "' . $name . '", 
+                 password = "' . $password . '" 
+                WHERE id = ' . (int)$input['id']; 
+    
         $user = $this->update($sql);
 
         return $user;
     }
+    
 
     /**
      * Insert user
@@ -96,5 +108,17 @@ class UserModel extends BaseModel {
         }
 
         return $users;
+    }
+    /**
+     * Delete users
+     * @param array delete
+     * @return array
+     */
+    public function deleteUser($id) {
+        $id = intval($id); // Đảm bảo rằng ID là số nguyên
+        $sql = "DELETE FROM users WHERE id = $id";
+        
+        // Thực hiện câu lệnh SQL
+        return $this->delete($sql);
     }
 }
