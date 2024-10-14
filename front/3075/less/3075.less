@@ -1,0 +1,106 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+@font-family: Arial, sans-serif;
+
+@main-color: #00f;
+@text-color: #000;
+@bg-color: white;
+@icon-color: #737373;
+@bd-icon:#e9e9e9;
+@opacity: 0.6;
+
+@header-bg: url('https://themelooks.us/demo/bizwalls/wordpress/wp-content/uploads/2017/05/page-title-bg-1.jpg') no-repeat center center / cover;
+
+@padding-default: 50px 0;
+@padding-header: 100px 0;
+@margin-bottom-header: 10px;
+@margin-bottom-h3: 20px;
+@margin-bottom-li: 15px;
+@icon-margin-right: 10px;
+
+@font-size-h1: 48px;
+@font-size-h3: 24px;
+@font-size-li: 16px;
+
+@icon-size1: 35px;
+@icon-size2: 40px;
+@border-color: #000;
+@bt-color: #03a9f4;
+@mg-bot : 20px;
+@bt-width: 15%;
+
+body {
+    font-family: @font-family;
+}
+
+.contact-header {
+    background: @header-bg;
+    color: @bg-color;
+    text-align: center;
+    padding: @padding-header;
+
+    h1 {
+        font-size: @font-size-h1;
+        margin-bottom: @margin-bottom-header;
+    }
+
+    .breadcrumb {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+
+        > li > a { color: @bg-color; }
+    }
+}
+
+.contact-info, .contact-form {
+    padding: @padding-default;
+
+    h3 { 
+        font-size: @font-size-h3; 
+        margin-bottom: @margin-bottom-h3; 
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: @margin-bottom-li;
+            font-size: @font-size-li;
+            
+            i { 
+                margin-right: @icon-margin-right; 
+                color: @icon-color; 
+                border: 0.5px solid @bd-icon;
+                padding: 7px 0;
+                text-align: center;
+                width: @icon-size1;
+                height: @icon-size1;
+            }
+        }
+    }
+}
+
+.social-icons a,
+.contact-form .btn {
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+    color: @text-color;
+    width: @icon-size2;
+    height: @icon-size2;
+    line-height: @icon-size;
+    margin-right: @icon-margin-right;
+    border: 1px solid @border-color;
+    border-radius: 0px;
+
+    &.btn {
+        background-color: @bt-color;
+        color: @bg-color;
+        border: none;
+        width: @bt-width;
+    }
+}
+
