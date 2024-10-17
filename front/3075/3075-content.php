@@ -11,17 +11,6 @@ $url_path = $url_host . $matches[1][0];
 
 $url_path = str_replace('\\', '/', $url_path);
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
 <div class="contact-header">
         <h1>Contact</h1>
         <ol class="breadcrumb">
@@ -66,6 +55,3 @@ $url_path = str_replace('\\', '/', $url_path);
             </div>
         </div>
     </div>
-</body>
-
-</html>

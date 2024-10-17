@@ -56,3 +56,30 @@ h1 {
   color: #007bff;
   text-decoration: none;
 }
+.news-item h2:hover {
+  color: #f35f55;
+  text-decoration: none;
+}
+.news-item .meta a {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.news-item .meta a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #001a33;
+  transition: width 0.3s ease;
+}
+.news-item .meta a:hover {
+  color: #000000;
+}
+.news-item .meta a:hover::after {
+  width: 100%;
+}

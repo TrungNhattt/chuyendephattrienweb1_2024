@@ -4,6 +4,8 @@
 @border-color: #ddd;
 @meta-text-color: #999;
 @link-color: #007bff;
+@hover-color-h2:#f35f55;
+@hover-color-a:#001a33;
 @width = 360px;
 @height = 185px;
 
@@ -75,4 +77,35 @@ h1 {
     font-size: 14px;
     color: @link-color;
     text-decoration: none;
+}
+// hover :
+.news-item h2:hover {
+    color: @hover-color-h2; /* Màu khi hover */
+    text-decoration: none;
+}
+.news-item .meta a {
+    font-size: 14px;
+    color: @link-color;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.news-item .meta a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: @hover-color-a;
+    transition: width 0.3s ease;
+}
+
+.news-item .meta a:hover {
+    color: darken(@hover-color-a, 10%);
+}
+
+.news-item .meta a:hover::after {
+    width: 100%;
 }
